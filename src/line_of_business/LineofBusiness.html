@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h1><span style="color: #ff9900">LoB(Line of Business)</span></h1>
+
+<table style="width: 633px; height: 2030px;" width="1038">
+<tbody>
+<tr style="height: 42px; background-color: #b1f0db;">
+<td style="width: 369px; height: 42px;" width="527"><strong><span style="color: #000000;">Standard ABAP object/ based solution</span></strong></td>
+<td style="width: 302px; height: 42px;" width="511"><strong><span style="color: #000000;">Public local API to use instead in ABAP for Cloud Development</span></strong></td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; text-align: center; height: 14px;" colspan="2"><strong>Business Partner</strong></td>
+</tr>
+<tr style="height: 126px;">
+<td style="width: 369px; height: 126px;" width="527"><strong>Table</strong>:
+KNA1
+KNB1
+KNVK
+KNVP
+KNVV
+LFA1
+LFB1
+LFM1</td>
+<td style="width: 302px; height: 126px;" width="511"><strong>CDS view</strong>:
+i_customer
+i_customercompany
+i_contactperson
+i_custsalespartnerfunc
+i_customersalesarea
+i_supplier
+i_suppliercompany
+i_supplierpurchasingorg</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; text-align: center; height: 14px;" colspan="2"><strong>Delivery</strong></td>
+</tr>
+<tr style="height: 56px;">
+<td style="width: 369px; height: 56px;" width="527"><strong>Table</strong>:
+LIKP
+LIPS
+TVST</td>
+<td style="width: 302px; height: 56px;" width="511"><strong>CDS view</strong>:
+i_deliverydocument
+i_deliverydocumentitem
+i_shippingpoint</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; text-align: center; height: 14px;" colspan="2"><strong>Finance</strong></td>
+</tr>
+<tr style="height: 238px;">
+<td style="width: 369px; height: 238px;" width="527"><strong>Table</strong>:
+BKPF
+BSEG
+ACDOCA
+SKA1
+SKB1
+T001
+T003
+CEPC
+<strong>Function Module</strong>:
+BAPI_ACC_EMPLOYEE_EXP_POST
+BAPI_ACC_INVOICE_RECEIPT_CHECK
+BAPI_ACC_INVOICE_RECEIPT_POST
+BAPI_ACC_DOCUMENT_CHECK
+BAPI_ACC_DOCUMENT_POST
+BAPI_ACC_ACT_POSTINGS_REVERSE</td>
+<td style="width: 302px; height: 238px;" width="511"><strong>CDS view</strong>:
+i_journalentry
+i_operationalacctgdocitem
+i_journalentryitem
+i_glaccountlineitem
+i_glaccountlineitemrawdata
+i_glaccountinchartofaccounts
+i_glaccountincompanycode
+i_companycode
+i_profitcenter
+<strong>Behavior Definition</strong>:
+i_journalentrytp</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; text-align: center; height: 14px;" colspan="2"><strong>Finance(Hierarchy)</strong></td>
+</tr>
+<tr style="height: 112px;">
+<td style="width: 369px; height: 112px;" width="527"><strong>Table</strong>:
+SETHEADER
+SETHEADERT
+SETLEAF
+SETNODE</td>
+<td style="width: 302px; height: 112px;" width="511"><strong>CDS view</strong>:
+i_costcenterhierarchy
+i_costcenterhierarchynode
+i_costctractivitytypehiernode
+i_functionalareahierarchy
+i_functionalareahiernode
+i_profitcenterhierarchy
+i_profitcenterhierarchynode</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; height: 14px; text-align: center;" colspan="2"><strong>Manufacturing</strong></td>
+</tr>
+<tr style="height: 364px;">
+<td style="width: 369px; height: 364px;" width="527"><strong>Table</strong>:
+MARA
+MARC
+MARD
+MARM
+AFKO
+AFPO
+AFRU
+AFVC
+AFVU
+AFVV
+MKAL
+PLKO
+PLPO
+<strong>Function Module</strong>:
+BAPI_MATERIAL_MAINTAINDATA_RT
+BAPI_MATERIAL_SAVEREPLICA
+BAPI_MATERIAL_SAVEDATA
+BAPI_PLANNEDORDER_GET_DETAIL
+BAPI_PRODORD_CHANGE
+BAPI_PRODORD_COMPLETE_TECH
+BAPI_PRODORD_CREATE
+BAPI_PRODORD_RELEASE
+BAPI_MATERIAL_STOCK_REQ_LIST</td>
+<td style="width: 302px; height: 364px;" width="511"><strong>CDS view</strong>:
+i_product
+i_productqm
+i_productsales
+i_productprocurement
+i_productplantbasic
+i_productsupplyplanning
+i_productstoragelocationbasic
+i_productunitsofmeasure
+i_manufacturingorder
+i_manufacturingorderitem
+i_mfgorderconfirmation
+i_manufacturingorderoperation
+i_manufacturingorderoperation
+i_manufacturingorderoperation
+i_productionversion
+i_billofoperationsgroup
+i_mfgbillofoperationsoperation
+<strong>Behavior Definition</strong>:
+i_producttp_2
+i_plannedordertp
+i_productionordertp
+i_productionordconfirmationtp
+i_plndindeprqmttp
+i_supplydemanditemtp</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; height: 14px; text-align: center;" colspan="2"><strong>Payment</strong></td>
+</tr>
+<tr style="height: 224px;">
+<td style="width: 369px; height: 224px;" width="527"><strong>Table</strong>:
+REGUH
+REGUP
+REGUV
+REGUT</td>
+<td style="width: 302px; height: 224px;" width="511"><strong>CDS view</strong>:
+i_paymentprogramcontrol
+i_paymentproposalpayment
+i_paymentproposalitem
+i_paymentproposalcontrol</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; height: 14px; text-align: center;" colspan="2"><strong>Physical Inventory Management</strong></td>
+</tr>
+<tr style="height: 224px;">
+<td style="width: 369px; height: 224px;" width="527"><strong>Table</strong>:
+IKPF
+ISEG
+T001L
+T001W
+MSEG
+MKPF
+<strong>Function Module</strong>:
+MB_CREATE_GOODS_MOVEMENT
+MB_POST_GOODS_MOVEMENT
+BAPI_GOODSMVT_CANCEL
+BAPI_GOODSMVT_CREATE
+BAPI_MATPHYSINV_CHANGECOUNT
+BAPI_MATPHYSINV_COUNT
+BAPI_MATPHYSINV_CREATE</td>
+<td style="width: 302px; height: 224px;" width="511"><strong>CDS view</strong>:
+i_physinvtrydocheader
+i_physinvtrydocitem
+i_storagelocation
+i_plant
+i_materialdocumentitem_2
+i_materialdocumentheader_2
+<strong>Behavior Definition</strong>:
+i_materialdocumenttp
+i_physicalinventorydocumenttp</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; height: 14px; text-align: center;" colspan="2"><strong>Sales</strong></td>
+</tr>
+<tr style="height: 266px;">
+<td style="width: 369px; height: 266px;" width="527"><strong>Table</strong>:
+VBAK
+VBAP
+VBEP
+VBFA
+VBKD
+VBRK
+VBRP
+TVGRT
+TVKBT
+TVKBZ
+TVKGR
+TVKO
+TVTA
+TVTW
+<strong>Function Module</strong>:
+BAPISDORDER_GETDETAILEDLIST
+BAPI_SALESORDER_CREATEFROMDAT2</td>
+<td style="width: 302px; height: 266px;" width="511"><strong>CDS view</strong>:
+i_salesdocument
+i_salesdocumentitem
+i_salesdocumentscheduleline
+i_sddocumentmultilevelprocflow
+i_salesdocument
+i_billingdocumentbasic
+i_billingdocumentitembasic
+i_salesgroup
+i_salesoffice
+i_salesareasalesoffice
+i_salesgroup
+i_salesorganization
+i_salesarea
+i_distributionchannel
+<strong>Behavior Definition</strong>:
+i_salesordertp</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; height: 14px; text-align: center;" colspan="2"><strong>Sales (Pricing)</strong></td>
+</tr>
+<tr style="height: 112px;">
+<td style="width: 369px; height: 112px;" width="527"><strong>Table</strong>:
+KONH
+KONM
+KONP
+KONV
+PRCD_ELEMENTS
+T685
+T685A</td>
+<td style="width: 302px; height: 112px;" width="511"><strong>CDS view</strong>:
+i_slsprcgconditionrecord
+i_slsprcgcndnrecordscale
+i_slsprcgconditionrecord
+i_slsprcgconditionrecord
+i_slsprcgconditionrecord
+i_conditiontype
+i_pricingconditiontype</td>
+</tr>
+<tr style="height: 14px; background-color: #e9f2ec;">
+<td style="width: 671px; height: 14px; text-align: center;" colspan="2"><strong>Sourcing and Procurement</strong></td>
+</tr>
+<tr style="height: 364px;">
+<td style="width: 369px; height: 364px;" width="527"><strong>Table</strong>:
+EKKO
+EKPO
+RBKP
+RSEG
+MATDOC
+EBAN
+EBKN
+EINA
+EINE
+MSKA
+MSKU
+MSLB
+MSLBH
+<strong>Function Module</strong>:
+BAPI_PO_CHANGE
+BAPI_PO_CREATE1
+BAPI_PR_CHANGE
+BAPI_PR_CREATE
+BAPI_REQUISITION_CHANGE
+BAPI_REQUISITION_CREATE
+BAPI_REQUISITION_GETDETAIL
+BAPI_INCOMINGINVOICE_CREATE
+BAPI_INCOMINGINVOICE_POST
+BAPI_INCOMINGINVOICE_RELEASE</td>
+<td style="width: 302px; height: 364px;" width="511"><strong>CDS view</strong>:
+i_purchaseorderapi01
+i_purchaseorderitemapi01
+i_supplierinvoiceapi01
+i_suplrinvcitempurordrefapi01
+i_materialdocumentheader_2
+i_purchaserequisitionitemapi01
+i_purreqnacctassgmtapi01
+i_purchasinginforecordapi01
+i_purchasinginforecordapi01
+i_materialstock
+<strong>Behavior Definition</strong>:
+i_purchaseordertp_2
+i_purchaserequisitiontp
+i_purchasecontracttp
+i_supplierinvoicetp</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
