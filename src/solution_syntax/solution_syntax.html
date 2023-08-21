@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+</table>
+<h1></h1>
+<h1><span style="color: #ff9900">Solution </span><span style="color: #ff9900">&amp; </span><span style="color: #ff9900">Syntax</span></h1>
+<table style="width: 899px" width="1038">
+<tbody>
+<tr style="background-color: #b1f0db">
+<td style="width: 10px;height: 13px" width="527"><strong>Standard ABAP syntax/ based solution</strong></td>
+<td style="width: 280px;height: 13px" width="511"><strong>Syntax/API to use instead in ABAP for Cloud Development</strong></td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>ABAP memory</strong></td>
+</tr>
+<tr style="height: 195px">
+<td style="width: 10px;height: 195px" width="527">
+
+EXPORT &lt;input variable&gt; TO MEMORY ID &lt;ID name&gt;.<br>
+
+IMPORT &lt;parameter name&gt; TO &lt;output variable&gt; FROM MEMORY ID &lt;ID name&gt;.<br>
+
+&nbsp;</td>
+<td style="width: 280px;height: 195px" width="511">
+
+EXPORT &lt;parameter name&gt; = &lt;input variable&gt;
+
+TO INTERNAL TABLE / DATA BUFFER.<br>
+
+IMPORT &lt;parameter name&gt; = &lt;output variable&gt;
+
+FROM INTERNAL TABLE / DATA BUFFER.</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>ABAP Object</strong></td>
+</tr>
+<tr style="height: 83px">
+<td style="width: 10px;height: 83px" width="527"><strong>Table</strong>:<br>
+DD01L<br>
+DD02L<br>
+DD02V<br>
+DD03L<br>
+DD04L</td>
+<td style="width: 280px;height: 83px" width="511"><strong>Class</strong>:<br>
+xco_cp_abap_dictionary<br>
+xco_cp_database_table<br>
+xco_cp_cds<br>
+xco_cp_data_element<br>
+xco_cp_domain</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Access management</strong></td>
+</tr>
+<tr style="height: 83px">
+<td style="width: 10px;height: 83px" width="527">SAP Role x Profiles based access management</td>
+<td style="width: 280px;height: 83px" width="511">
+
+Access Control based on Authority Object/Field, Restriction Type/Field, IAM app, CDS Access Control Object and Business Catalog/Role
+&nbsp;
+<br>
+For the detailed solution , scroll down below to "<strong>Access management</strong>"</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2" width="527"><strong>Application log</strong></td>
+</tr>
+<tr style="height: 153px">
+<td style="width: 10px;height: 153px" width="527"><strong>Tcode</strong>:<br>
+SLG0<br>
+SLG1<br>
+<strong>Function module</strong>:<br>
+BAL_LOG_CREATE<br>
+BAL_LOG_MSG_ADD<br>
+BAL_DB_SAVE<br>
+BAL_DB_SEARCH<br>
+BAL_LOG_MSG_READ<br>
+BAL_DSP_TXT_MSG_READ<br>
+<strong>Table</strong>:<br>
+BALHDR<br>
+BALDAT</td>
+<td style="width: 280px;height: 153px" width="511"><strong>Class</strong>:<br>
+cl_bali_object_handler(CRUD application log object)<br>
+cl_bali_log / cl_bali_header_setter(Write log)<br>
+cl_bali_log_db/cl_bali_log_filter(Read log)<br>
+xco_cp_bal<br>
+<strong>Fiori app</strong>:<br>
+Application logs</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Calculation</strong></td>
+</tr>
+<tr style="height: 55px">
+<td style="width: 10px;height: 55px" width="527">ADD, SUBTRACT, MULTIPLY, DIVIDE</td>
+<td style="width: 280px;height: 55px" width="511">ADD-&gt; + or +=
+SUBTRACT-&gt;   – or –=
+MULTIPLY-&gt; * or *=
+DIVIDE-&gt; / or /=</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Calendar(Factory calendar)</strong></td>
+</tr>
+<tr style="height: 111px">
+<td style="width: 10px;height: 111px" width="527"><strong>Tcode</strong>:<br>
+SCAL<br>
+<strong>Function module</strong>:<br>
+FACTORYDATE_CONVERT_TO_DATE<br>
+DATE_CONVERT_TO_FACTORYDATE<br>
+CALCULATE_DATE<br>
+RKE_SELECT_FACTDAYS_FOR_PERIOD<br>
+<strong>Table</strong>:<br>
+TFACD<br>
+TFACS</td>
+<td style="width: 280px;height: 111px" width="511"><strong>Class</strong>:<br>
+CL_FHC_CALENDAR_RUNTIME<br>
+<strong>CDS views</strong>:<br>
+I_FactoryCalendarBasic<br>
+I_FactoryCalendarBasicText<br>
+....<br>
+For the detailed solution , scroll down below to "<strong>Calendar(Factory calendar)</strong>"</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Calendar(General)</strong></td>
+</tr>
+<tr style="height: 55px">
+<td style="width: 10px;height: 55px" width="527"><strong>Function module</strong>:<br>
+MONTH_NAMES_GET<br>
+WEEK_GET_FIRST_DAY<br>
+DATE_GET_WEEK</td>
+<td style="width: 280px;height: 55px" width="511"><strong>Class</strong>:<br>
+CL_SCAL_UTILS</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Calendar(Public holidays)</strong></td>
+</tr>
+<tr style="height: 97px">
+<td style="width: 10px;height: 97px" width="527"><strong>Tcode</strong>:<br>
+SCAL<br>
+<strong>Function module</strong>:<br>
+HOLIDAY_CHECK_AND_GET_INFO<br>
+HOLIDAY_GET<br>
+HOLIDAY_CALENDAR_GET<br>
+<strong>Table</strong>:<br>
+THOC<br>
+THOCD</td>
+<td style="width: 280px;height: 97px" width="511"><strong>Class</strong>:<br>
+CL_FHC_CALENDAR_RUNTIME<br>
+<strong>CDS views</strong>:<br>
+I_PublicHolidayCalendarBasic<br>
+I_PublHolidayCalendarBasicText<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Calendar(Public holidays)</strong>"</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2" width="527"><strong>Call stack</strong></td>
+</tr>
+<tr style="height: 41px">
+<td style="width: 10px;height: 41px" width="527"><strong>Function module</strong>:<br>
+SYSTEM_CALLSTACK<br>
+SYSTEM_CALLSTACK_OF_PROCESS</td>
+<td style="width: 280px;height: 41px" width="511"><strong>Class</strong>:
+xco_cp_call_stack</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2" width="527"><strong>Conversion(XSTRING, Binary, BASE64)</strong></td>
+</tr>
+<tr style="height: 97px">
+<td style="width: 10px;height: 97px" width="527"><strong>Function module</strong>:<br>
+SCMS_BINARY_TO_XSTRING<br>
+SCMS_BINARY_TO_STRING<br>
+SCMS_XSTRING_TO_BINARY<br>
+SCMS_STRING_TO_XSTRING<br>
+SCMS_BASE64_ENCODE_STR<br>
+SCMS_BASE64_DECODE_STR</td>
+<td style="width: 280px;height: 97px" width="511"><strong>Class</strong>:<br>
+xco_cp=&gt;xstring<br>
+xco_cp_binary</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Count itab rows</strong></td>
+</tr>
+<tr style="height: 13px">
+<td style="width: 10px;height: 13px" width="527">DESCRIBE TABLE lt_table line DATA(lv_count)</td>
+<td style="width: 280px;height: 13px" width="511">DATA(lv_count) = lines( lt_table )</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Date handling</strong></td>
+</tr>
+<tr style="height: 111px">
+<td style="width: 10px;height: 111px" width="527"><strong>Function module</strong>:<br>
+CONVERT_DATE_TO_EXTERNAL<br>
+CONVERT_DATE_TO_INTERNAL<br>
+DATE_CONV_EXT_TO_INT<br>
+DATE_CHECK_PLAUSIBILITY<br>
+<strong>Class</strong>:<br>
+cl_demo_date_time<br>
+<strong>With write</strong>:<br>
+WRITE sy-datum TO date.</td>
+<td style="width: 280px;height: 111px" width="511"><strong>Class</strong>:<br>
+cl_abap_datfm<br>
+cl_abap_timefm<br>
+cl_abap_tstmp</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Debugging</strong></td>
+</tr>
+<tr style="height: 83px">
+<td style="width: 10px;height: 83px" width="527">
+
+SAP GUI based debugging<br>
+
+Synatax:<br>
+break-point</td>
+<td style="width: 280px;height: 83px" width="511">ABAP Development Tools based debugging</td>
+</tr>
+<tr style="background-color: #e9f2ec">
+<td style="width: 290px;text-align: center;height: 13px" colspan="2"><strong>Documents change logs</strong></td>
+</tr>
+<tr style="height: 139px">
+<td style="width: 10px;height: 139px" width="527"><strong>Table</strong>:<br>
+CDHDR<br>
+CDPOS<br>
+<strong>Tcode</strong>:<br>
+SCDO<br>
+<strong>Function module</strong>:<br>
+CHANGEDOCUMENT_READ_HEADERS<br>
+CHANGEDOCUMENT_READ_HEADERS</td>
+<td style="width: 280px;height: 139px" width="511">
+Change Document Object<br>
+<strong>Class</strong>:<br>
+&lt;name space&gt;CL_&lt;change document object name&gt;_CHDO<br>
+cl_chdo_read_tools<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Change document logging</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Event Blocks</strong></td>
+</tr>
+<tr style="height: 27px">
+<td style="width: 10px;height: 27px" width="527">
+LOAD-OF-PROGRAM<br>
+INITIALIZATION<br>
+AT SELECTION-SCREEN<br>
+START-OF-SELECTION, etc..</td>
+<td style="width: 280px;height: 27px" width="511">Not allowed because 1. Program object is not allowed to be created 2. No dynpro allowed therefore no selection screen.</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Excel upload to itab</strong></td>
+</tr>
+<tr style="height: 69px">
+<td style="width: 10px;height: 69px" width="527"><strong>Function module</strong>:<br>
+GUI UPLOAD<br>
+TEXT_CONVERT_XLS_TO_SAP<br>
+ALSM_EXCEL_TO_INTERNAL_TABLE<br>
+<strong>Class</strong>:<br>
+cl_fdt_xl_spreadsheet</td>
+<td style="width: 280px;height: 69px" width="511"><strong>Class</strong>:<br>
+xco_cp_xlsx<br>
+xco_cp_xlsx_selection<br>
+xco_cp_xlsx_read_access<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Excel upload to itab</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Exchange rate</strong></td>
+</tr>
+<tr style="height: 41px">
+<td style="width: 10px;height: 41px" width="527"><strong>Table</strong>:<br>
+TCURR<br>
+V_TCURR</td>
+<td style="width: 280px;height: 41px" width="511"><strong>Class</strong>:<br>
+cl_exchange_rates(only update and conversion)<br>
+...<br>
+For reading the exchange rate, scroll down below to "<strong>Exchange rate</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Forms and printing</strong></td>
+</tr>
+<tr style="height: 153px">
+<td style="width: 10px;height: 153px" width="527"><strong>Tcode</strong>:<br>
+SE71~SE77(SAP Script)<br>
+SMARTFORMS, SMARTSTYLES(Smartforms)<br>
+SFP(Adobe forms)<br>
+<strong>Function module</strong>:<br>
+OPEN_FORM<br>
+START_FORM<br>
+WRITE_FORM<br>
+END_FORM<br>
+CLOSE_FORM<br>
+Call Function '&lt;Smartform/Adobe form FM&gt;'</td>
+<td style="width: 280px;height: 153px" width="511"><strong>Tool</strong>:<br>
+Adobe LiveCycle Designer(for designing form layout)<br>
+<strong>Services</strong>:<br>
+Forms Service by Adobe(for rendering PDF forms built with Adobe LiveCycle Designer)<br>
+<strong>Class</strong>:<br>
+cl_print_queue_utils(writing print queues)<br>
+<strong>Fiori app</strong>:<br>
+Maintain print queues<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Forms and printing</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Fiori programming model </strong></td>
+</tr>
+<tr>
+<td style="width: 10px">Gateway service builder SEGW
+BOPF framework</td>
+<td style="width: 280px">RESTful ABAP Programming model (RAP)</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>HTTP Service</strong></td>
+</tr>
+<tr style="height: 55px">
+<td style="width: 10px;height: 55px" width="527"><strong>Tcode</strong>:<br>
+SICF<br>
+<strong>Interface</strong>:<br>
+IF_HTTP_EXTENSION</td>
+<td style="width: 280px;height: 55px" width="511"><strong>ABAP object</strong>:
+Create HTTP service and implement logic in underlying ABAP class</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Identity  Management</strong></td>
+</tr>
+<tr style="height: 153px">
+<td style="width: 10px;height: 153px" width="527"><strong>Table</strong>:<br>
+AGR_USERS<br>
+USR01<br>
+USR03<br>
+<strong>Tcode</strong>:<br>
+PFCG<br>
+SU01<br>
+SU10</td>
+<td style="width: 280px;height: 153px" width="511"><strong>CDS View</strong>:<br>
+I_IAMBusinessUserBusinessRole(Business Role assignment to Business User)<br>
+I_IAMBusinessRole(Business Role)<br>
+I_IAMBusinessUserLogonDetails (Business user login info)<br>
+I_BusinessPartner(Employee general data)<br>
+I_WorkplaceAddress(Employee address data)<br>
+<strong>Class</strong>:<br>
+cl_iam_business_role_factory<br>
+cl_iam_business_user_factory<br>
+<strong>Fiori app</strong>:<br>
+Maintain Business User<br>
+Maintain Business Roles</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>XML handling</strong></td>
+</tr>
+<tr style="height: 83px">
+<td style="width: 10px;height: 83px" width="527"><strong>Function module</strong>:<br>
+SMUM_XML_PARSE<br>
+SMUM_XML_CREATE<br>
+SMUM_XML_CREATE_X<br>
+TEXT_CONVERT_XML_TO_SAP<br>
+<strong>Tcode</strong>:<br>
+XSLT_TOOL</td>
+<td style="width: 280px;height: 83px" width="511"><strong>Class</strong>:<br>
+cl_demo_xml_access<br>
+cl_sxml_string_reader<br>
+cl_sxml_string_writer<br>
+cl_sxml_table_reader<br>
+cl_sxml_table_writer</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Job scheduling</strong></td>
+</tr>
+<tr style="height: 125px">
+<td style="width: 10px;height: 125px" width="527"><strong>Tcode</strong>:<br>
+SM36<br>
+SM37<br>
+<strong>Function module</strong>:<br>
+JOB_OPEN<br>
+JOB_CLOSE<br>
+JOB_SUBMIT<br>
+BP_JOB_DELETE<br>
+BP_JOB_READ<br>
+SHOW_JOBSTATE</td>
+<td style="width: 280px;height: 125px" width="511"><strong>Fiori app</strong>:<br>
+Application Jobs<br>
+Application Job Templates<br>
+Maintain Job Users<br>
+<strong>Class</strong>:<br>
+cl_apj_dt_create_content(Creating job catalog and template)<br>
+cl_apj_rt_api(Start, change, delete job programmatically)<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Job scheduling</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Large object handing(storing as MIME)</strong></td>
+</tr>
+<tr style="height: 153px">
+<td style="width: 10px;height: 153px" width="527"><strong>1.Use MIME Repository</strong>:<br>
+<strong>Tcode</strong>:<br>
+SMW0<br>
+<strong>Class</strong>:<br>
+CL_MIME_REPOSITORY_API<br>
+CL_WB_MIME_REPOSITORY<br>
+<strong>2.Store as XSTRING in custom table</strong>:<br>
+OPEN DATASET, TRANSFER, CLOSE DATAET(from application server)<br>
+<strong>Function module</strong>:<br>
+GUI_UPLOAD(upload from local)<br>
+SCMS_BINARY_TO_XSTRING(conversion to xstring)</td>
+<td style="width: 280px;height: 153px" width="511">ABAP RAP with Large object handing CDS annotations:<br>
+@Semantics.largeObject<br>
+@Semantics.mimeType<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Large object handling</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Lock object</strong></td>
+</tr>
+<tr style="height: 55px">
+<td style="width: 10px;height: 55px" width="527"><strong>Function module</strong>:<br>
+ENQUEUE_E_TABLE<br>
+DEQUEUE_E_TABLE<br>
+DEQUEUE_ALL</td>
+<td style="width: 280px;height: 55px" width="511"><strong>Class</strong>:
+cl_abap_lock_object_factory</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Loop group level processing</strong></td>
+</tr>
+<tr style="height: 69px">
+<td style="width: 10px;height: 69px" width="527">LOOP AT lt_tab ASSIGNING FIELD-SYMBOL(&lt;tab&gt;).<br>
+AT NEW field1.<br>
+ENDAT.<br>
+ENDLOOP.</td>
+<td style="width: 280px;height: 69px" width="511">LOOP AT lt_table ASSIGNING FIELD-SYMBOL(&lt;lw_table&gt;)<br>
+GROUP BY ( field1 = &lt;lw_table&gt;-field1 ).<br>
+LOOP AT GROUP &lt;lw_table&gt; ASSIGNING FIELD-SYMBOL(&lt;lw_field1&gt;).ENDLOOP.<br>
+ENDLOOP.</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2" width="527"><strong>Number range</strong></td>
+</tr>
+<tr style="height: 83px">
+<td style="width: 10px;height: 83px" width="527"><strong>Tcode</strong>:<br>
+SNRO<br>
+<strong>Table</strong>:<br>
+NRIV<br>
+<strong>Function module</strong>:<br>
+NUMBER_GET_NEXT<br>
+NUMBER_CHECK</td>
+<td style="width: 280px;height: 83px" width="511"><strong>Class</strong>:<br>
+cl_numberrange_objects(maintain number range object)<br>
+cl_numberrange_intervals(maintain number range interval)<br>
+cl_numberrange_runtime(get next number, check number)Fiori app:<br>
+Manage number range intervals</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Parallel processing</strong></td>
+</tr>
+<tr style="height: 41px">
+<td style="width: 10px;height: 41px" width="527">CALL FUNCTION … STARTING NEW TASK</td>
+<td style="width: 280px;height: 41px" width="511"><strong>Class</strong>:<br>
+cl_abap_parallel<br>
+For the detailed solution , scroll down below to "Parallel processing"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Regex</strong></td>
+</tr>
+<tr style="height: 111px">
+<td style="width: 10px;height: 111px" width="527">DATA:lv_input TYPE string VALUE 'ABCDE12345'.<br>
+REPLACE ALL OCCURRENCES OF<br>
+REGEX '[A-Z]' IN lv_input<br>
+WITH space.</td>
+<td style="width: 280px;height: 111px" width="511"><strong>Class</strong>:<br>
+cl_abap_matcher<br>
+cl_abap_regex<br>
+xco_cp_regular_expression<br>
+or<br>
+DATA:lv_input TYPE string VALUE 'ABCDE12345'.<br>
+REPLACE ALL OCCURRENCES OF<br>
+PCRE '[A-Z]' IN lv_input<br>
+WITH space.</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>RFC</strong></td>
+</tr>
+<tr style="height: 167px">
+<td style="width: 10px;height: 167px" width="527">Tcode:<br>
+SE37<br>
+SM59</td>
+<td style="width: 280px;height: 167px" width="511"><strong>ABAP object</strong>:<br>
+For Outbound<br>
+- Create outbound service with service type RFC<br>
+- Create communication scenario for this outbound service<br>
+For Inbound<br>
+- Create function module and set the processing type as RFC<br>
+- Create Communication Scenario and set the created RFC there as inbound service<br>
+- Create Communication Arrangement for the Communication Scenario.<br>
+- Client can now trigger the API created by Communication Arrangement to process the logic inside the function module.<br>
+<strong>Class</strong>:<br>
+cl_rfc_destination_provider(create instance of RFC destination)</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Search string</strong></td>
+</tr>
+<tr style="height: 27px">
+<td style="width: 10px;height: 27px" width="527">DATA: text TYPE string VALUE `ABCDEFG`.<br>
+SEARCH text FOR 'CD' IN CHARACTER MODE.</td>
+<td style="width: 280px;height: 27px" width="511">DATA: text TYPE string VALUE `ABCDEFG`.<br>
+FIND 'CD' IN text IN CHARACTER MODE.</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>SOAP Service</strong></td>
+</tr>
+<tr style="height: 69px">
+<td style="width: 10px;height: 69px" width="527"><strong>Tcode</strong>:<br>
+SOAMANAGER<br>
+SPROXY<br>
+<strong>Function module</strong> based web service creation</td>
+<td style="width: 280px;height: 69px" width="511"><strong>ABAP object</strong>:<br>
+Create outbound service with service type SOAP<br>
+Create communication scenario for this outbound service<br>
+<strong>Class</strong>:<br>
+cl_soap_destination_provider(create instance of SOAP destination)<br>
+*Inbound SOAP service creation is not supported</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>System date, time, timezone</strong></td>
+</tr>
+<tr style="height: 41px">
+<td style="width: 10px;height: 41px" width="527">sy-datum<br>
+sy-uzeit<br>
+sy-zonlo</td>
+<td style="width: 280px;height: 41px" width="511">cl_abap_context_info=&gt;get_system_date( )<br>
+cl_abap_context_info=&gt;get_system_time( )<br>
+cl_abap_context_info=&gt;get_user_time_zone(  )</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>System fields</strong></td>
+</tr>
+<tr style="height: 41px">
+<td style="width: 10px;height: 41px" width="527">Everything else than those specified on the right</td>
+<td style="width: 280px;height: 41px" width="511">sy-batch,  sy-dbcnt, sy-fdpos, sy-index, sy-index , sy-mandt, sy-mandt, sy-msgno,
+sy-msgty, sy-msgv1234, sy-subrc, sy-sysid, sy-tabix, sy-uname</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2" width="527"><strong>Translation</strong></td>
+</tr>
+<tr style="height: 55px">
+<td style="width: 10px;height: 55px" width="527">SAP GUI based translation maintenance</td>
+<td style="width: 280px;height: 55px" width="511"><strong>Class</strong>:<br>
+xco_cp_i18n<br>
+<strong>Fiori app</strong>:<br>
+Maintain translations<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>Translation</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Transport request</strong></td>
+</tr>
+<tr style="height: 41px">
+<td style="width: 10px;height: 41px" width="527"><strong>Table</strong>:<br>
+E070<br>
+E071</td>
+<td style="width: 280px;height: 41px" width="511"><strong>Class</strong>:<br>
+xco_cp_cts<br>
+xco_cp_transport</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>UI</strong></td>
+</tr>
+<tr style="height: 83px">
+<td style="width: 10px;height: 83px" width="527">
+SAP GUI/WebGUI<br>
+Write statement<br>
+ALV</td>
+<td style="width: 280px;height: 83px" width="511">ADT output console<br>
+Fiori app generate by ABAP UI service<br>
+Fiori app generate by ABAP2UI5(open source)<br>
+...<br>
+For the detailed solution , scroll down below to "<strong>UI</strong>"</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2" width="527"><strong>UNIX timestamp</strong></td>
+</tr>
+<tr style="height: 27px">
+<td style="width: 10px;height: 27px" width="527">No easy way to convert UNIX timestamps without calculations.</td>
+<td style="width: 280px;height: 27px" width="511"><strong>Class</strong>:<br>
+xco_cp=&gt;sy-&gt;unix_timestamp( )</td>
+</tr>
+<tr style="height: 13px;background-color: #e9f2ec">
+<td style="width: 290px;height: 13px;text-align: center" colspan="2"><strong>Units of Measurement</strong></td>
+</tr>
+<tr style="height: 97px">
+<td style="width: 10px;height: 97px" width="527"><strong>Table</strong>:<br>
+T006*<br>
+<strong>Function Module</strong>:<br>
+UNIT_CONVERSION_SIMPLE<br>
+UNIT_GET<br>
+MC_UNIT_CONVERSION<br>
+CONVERSION_EXIT_CUNIT_INPUT<br>
+<strong>Tcode</strong>:<br>
+CUNI</td>
+<td style="width: 280px;height: 97px" width="511"><strong>Class</strong>:<br>
+cl_uom_maintenance(Units of Measurement)<br>
+cl_uom_dim_maintenance(Dimension)<br>
+cl_uom_conversion<br>
+<strong>CDS View</strong>:<br>
+I_UnitOfMeasure</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
