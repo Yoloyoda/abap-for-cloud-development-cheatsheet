@@ -9,7 +9,7 @@ ABAP on Cloud(aka **ABAP for Cloud Development** language version) is similar ye
 This blogs is a **one-stop shop** for developers and IT strategist who like to make smooth transition from standard ABAP to ABAP for Cloud Development. It consists of three parts:
 
 Cheat sheet on [LoB(Line of Business)](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/tree/main/line_of_business#readme) level
-Cheat sheet on **Solution & Syntax**(https://www.google.com) level
+Cheat sheet on [Solution & Syntax](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/tree/main/solution_syntax) level
 Solution overview & hint based on ABAP for Cloud Development
 You can choose to just refer to the cheat sheet, or you can deep dive into each solution at later half of this blog.
 
