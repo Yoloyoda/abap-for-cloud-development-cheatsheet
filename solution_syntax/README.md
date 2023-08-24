@@ -54,4 +54,4 @@ Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud
 <img width="687" alt="DocChangLog3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5f67afbe-fe9f-47c4-bb32-97ae3fa1d6df">
 
 
-Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zchange_document.clas.abap)
+Find demo program for Change document logging [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zchange_document.clas.abap)
