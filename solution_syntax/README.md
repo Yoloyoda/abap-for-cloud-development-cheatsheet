@@ -16,12 +16,16 @@ Similar to in SAP on-premise access management, Authorization Object and Role ar
 The actual authorization check uses the same ABAP syntax, AUTHORITY-CHECK OBJECT. This checks the authorization object and activity value, which hasn’t changed from standard ABAP.
 
 In my below example, I created Authorization Field “ZTABLE”, Authorization Object “ZAUTH_OBJ”. In the IAM app, set the authorization object and restrict the table name and activity.
+
 <img width="490" alt="AccessManagement1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/ae3f6f02-1838-40ba-a2fa-097f30fcbc16">
 
 In the Behavior Definition , implement global authorization instance.
 In the Behavior Handler class, implement the authorization check in method “get_global_authorizations”. Set a debug on this logic so that we see what is going on.
 
 Now go to the Fiori application generated from the Odata service and go to the item to edit the record. The debugger should start and you can see that the result of authorization check for update(sy-subrc = 0) is OK. This is because in IAM app, 02(change) is allowed.
+
 <img width="596" alt="AccessManagement2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/cdaec642-980b-4c4c-b5de-490eed239a5e">
+
 Now let’s create a new record. This time, the authority check fails because IAM app does not allow 01(create).
+
 <img width="472" alt="AccessManagement3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/c4854395-c6a7-4198-821e-bb5528119056">
