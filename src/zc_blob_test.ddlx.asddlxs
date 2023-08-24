@@ -1,0 +1,78 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'BLOB_TEST',
+    typeNamePlural: 'BLOB_TESTs'
+  }
+}
+annotate view ZC_BLOB_TEST with
+{
+  @UI.facet: [ {
+    id: 'idIdentification',
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'BLOB_TEST',
+    position: 10
+  } 
+
+  ]
+  @UI.lineItem: [ {
+    position: 10 ,
+    importance: #MEDIUM,
+    label: 'Docnum'
+  } ]
+  @UI.identification: [ {
+    position: 10 ,
+    label: 'Docnum'
+  } ]
+  @EndUserText: {
+      label: 'Document number'
+  }
+  Docnum;
+
+  @UI.lineItem: [ {
+    position: 20 ,
+    importance: #MEDIUM,
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 20 ,
+    label: ''
+  } ]
+ @UI:
+  { fieldGroup:     [ { position: 50, qualifier: 'Upload' , label: 'Attachment'} ]}  
+  @EndUserText: {
+      label: 'Attachment'
+  }
+  Attachment;
+
+  @UI.lineItem: [ {
+    position: 30 ,
+    importance: #MEDIUM,
+    label: 'Mimetype'
+  } ]
+  @UI.identification: [ {
+    position: 30 ,
+    label: 'Mimetype'
+  } ]
+  @EndUserText: {
+      label: 'Mimetype'
+  }  
+  Mimetype;
+
+  @UI.lineItem: [ {
+    position: 40 ,
+    importance: #MEDIUM,
+    label: 'Filename'
+  } ]
+  @UI.identification: [ {
+    position: 40 ,
+    label: 'Filename'
+  } ]
+  @EndUserText: {
+      label: 'Filename'
+  }    
+  Filename;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

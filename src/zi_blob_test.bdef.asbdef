@@ -1,0 +1,48 @@
+managed implementation in class ZCL_BLOB_TEST unique;
+strict ( 1 );
+with draft;
+
+define own authorization context
+{
+  'ZAUTH_OBJ';
+}
+
+define behavior for ZI_BLOB_TEST alias BLOB_TEST
+persistent table zblob_test
+draft table ziblob_test_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+
+{
+  field ( mandatory : create )
+  Docnum;
+
+  field ( readonly )
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  Docnum;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  mapping for zblob_test
+    {
+      Docnum             = docnum;
+      Attachment         = attachment;
+      Mimetype           = mimetype;
+      Filename           = filename;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+
+}
