@@ -1,4 +1,4 @@
-<img width="589" alt="Diagram" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/0b32801b-0f02-4acd-bc65-d83f8a4b40b0"># abap-for-cloud-development-cheatsheet
+# abap-for-cloud-development-cheatsheet
 Cheatsheet for smooth adaptation to ABAP on Cloud
 Original blog https://blogs.sap.com/2023/08/15/smooth-transition-to-abap-for-cloud-developmentcheat-sheet/
 
@@ -13,4 +13,9 @@ Cheat sheet on **Solution & Syntax** level
 Solution overview & hint based on ABAP for Cloud Development
 You can choose to just refer to the cheat sheet, or you can deep dive into each solution at later half of this blog.
 
-<img width="589" alt="Diagram" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/cc0d04ba-255f-46f1-accc-1b70ef7b421c">
+<img width="589" alt="Diagram" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/0b32801b-0f02-4acd-bc65-d83f8a4b40b0">
+
+# Disclaimer
+- Availability of ABAP object for cloud development may differ between ABAP Platform for S4 HANA and BTP ABAP Environment
+- ABAP object for cloud development may be renewed and deprecated over time
+- The list covers the most common ABAP topics and Line of Business(from personal perspective) but certain areas of your interest may be missing. You are welcome to comment these areas and I maybe able to add them later on.
