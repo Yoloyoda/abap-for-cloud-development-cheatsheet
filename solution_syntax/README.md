@@ -32,3 +32,26 @@ Now let’s create a new record. This time, the authority check fails because IA
 
 # Calendar
 Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcalendar.clas.abap)
+
+# Change document logging
+1. Create a table where you want to log the document change. Create data element for the field and check on Change Document Logging.
+
+<img width="393" alt="DocChangLog1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1f1dc23a-f146-458d-815f-03427d202f25">
+
+2. Create Change Document Object and set your Z table. Check how you want to log your Z table
+**Log Field values for insert** – Create log entry record for each field value that’s entered.
+**Log Initial values for insert** – Create log entry record for each field value even if they are empty. This created high volumn of change doucment records. Use with caution.
+**Log Field values for deletion** – When object is deleted, create log entry record for each field value that’s entered.
+**Log Initial values for deletion** – When object is deleted, create log entry record for each field value even if they are empty. This created high volumn of change doucment records. Use with caution.
+
+<img width="331" alt="DocChangLog2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1e30dccd-3a9a-41da-a7a8-fbc73270eb97">
+
+3. Creating change document entry. Use the generated class to write change document logging. In the below example, it’s logging update of table field
+
+4. Reading the change document entry. In the generated class, add method implementation “if_chdo_enhancements~authority_check” and put below code inside. This method is for implementing your own autheority check, but in the below example, it is simply returning rv_is_authorized = ‘X’, meaning the authroity check is succesfull.
+
+5. Use class method cl_chdo_read_tools=>changedocument_read to read the change log.
+<img width="687" alt="DocChangLog3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5f67afbe-fe9f-47c4-bb32-97ae3fa1d6df">
+
+
+Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zchange_document.clas.abap)
