@@ -1,4 +1,0 @@
-@EndUserText.label: 'Service definition forZC_BLOB_TEST'
-define service ZSRV_D_BLOB_TEST {
-  expose ZC_BLOB_TEST as BLOB_TEST;
-}
