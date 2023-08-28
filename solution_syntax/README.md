@@ -78,22 +78,22 @@ This app is meant to maintain your custom Z customizing table but by default, SA
 
 <img width="590" alt="Exchange rate" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/39669a89-f674-4f08-a4e9-73b404cdbbe2">
 
-# Forms and printing
+# Forms and printing 
 *The below setup is for Business Technology Platform. Connecting Forms Service by Adobe with ABAP Environment in S4 may require different setup.
 
-**Preparation**
+**Preparation** &nbsp;<br />
 Forms Service by Adobe and Forms Service by Adobe API are required in Business Technology Platform. On the service instance of Forms Service by Adobe API, create a service key. Finally, create destination for Forms Service by Adobe instance.
 
 <img width="461" alt="Print1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/c46b0904-59eb-4066-a266-68079fd254ff">
 
-**Build Form template**
+**Build Form template** &nbsp;<br />
 Since there is no SAP Script or Smartforms, Adobe LiveCycle Designer must be used to create form layout. Follow note 2187332 to install it to your local PC.
 
 Once the template is created, download in Adobe XML Form (*xdp), then upload this to Forms Template Store.
 
 <img width="366" alt="Print2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/e359469e-d7c6-4076-bee4-2a59d67c0cf1">
 
-**Rendering Forms**
+**Rendering Forms** &nbsp;<br />
 Rendering forms requies Forms Service by Adobe. Follow my blog below to set it up and consume from ABAP. https://blogs.sap.com/2022/12/14/get-started-with-forms-service-by-adobe-rest-api-in-btp/
 
 Create client for Forms Service by Adobe template store.
@@ -111,7 +111,7 @@ The rendering will return the PDF content result with base64 encoded string.
 
 <img width="483" alt="Print3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1e4ec549-65c1-4431-b3da-76e45807e6dd">
 
-**Viewing PDF**
+**Viewing PDF** &nbsp;<br />
 To view the content, we must first convert base64 encoded content to xstring. Then upload this xstring as mime object in your Ztable. This Z table can be created following “Excel upload to itab” part of this blog.
 
 ```abap
@@ -137,7 +137,7 @@ Go to the RAP service and the inserted record is disaplayed. Click on the attach
 
 Find demo program for Forms and printing [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
 
-**Print Queue**
+**Print Queue** &nbsp;<br />
 Create a print queue by using cl_print_queue_utils. The below examples sends data from table zcd_test and send it to print queue.
 
 Find demo program for Print Queue [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
