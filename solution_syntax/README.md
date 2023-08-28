@@ -5,7 +5,7 @@ Access complete cheatsheet [here](https://htmlpreview.github.io/?https://github.
 You may use BUFFER or INTERNAL TABLE to exchange ABAP memory but former is much simpler to use. BUFFER transfers to cluster data the buffer data object which is in xstring format.
 The main difference is that passing data using MEMORY ID is not supported anymore. Therefore only these 2 options are available.
 
-Find demo program for ABAP Memory [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zabap_memory.clas.abap)
+Find demo objects for ABAP Memory [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zabap_memory.clas.abap)
 
 # Access management
 Note that below example demonstrates how to restrict access inside IAM app. In addition, you may choose to implement Access Control on your CDS Data Definition.
@@ -33,7 +33,7 @@ Now let’s create a new record. This time, the authority check fails because IA
 <img width="472" alt="AccessManagement3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/c4854395-c6a7-4198-821e-bb5528119056">
 
 # Calendar
-Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcalendar.clas.abap)
+find demo object for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcalendar.clas.abap)
 
 # Change document logging
 1. Create a table where you want to log the document change. Create data element for the field and check on Change Document Logging.
@@ -56,7 +56,7 @@ Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud
 <img width="687" alt="DocChangLog3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5f67afbe-fe9f-47c4-bb32-97ae3fa1d6df">
 
 
-Find demo program for Change document logging [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zchange_document.clas.abap)
+find demo object for Change document logging [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zchange_document.clas.abap)
 
 # Excel upload to itab
 **The upload data**
@@ -67,7 +67,7 @@ Step1. Upload excel file by RAP Odata service described in “Large object handi
 
 Step2. Read the XSTRING to with xco_cp_xlsx. This class will read worksheet specified. Prepare an internal table that matches the file structure of excel. Use IF_XCO_XLSX_RA_WORKSHEET to select the range of the worksheet. Finally, use write_to method in if_xco_xlsx_ra_rs_operation_fc to write the values in internal table.
 
-Find demo program for Excel upload to itab [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zexcel_itab.clas.abap)
+find demo object for Excel upload to itab [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zexcel_itab.clas.abap)
 
 <img width="349" alt="Excel2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/82427493-5541-4d2f-b9ab-04f01159bc4d">
 
@@ -135,15 +135,50 @@ Go to the RAP service and the inserted record is disaplayed. Click on the attach
 <img width="516" alt="Print4" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1a115900-7282-4117-af87-a307e5428fd5">
 <img width="282" alt="Print5" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/32d21cb5-dddf-4131-a30e-de33c68b9ce2">
 
-Find demo program for Forms and printing [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
+find demo object for Forms and printing [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
 
 **Print Queue** &nbsp;<br />
 Create a print queue by using cl_print_queue_utils. The below examples sends data from table zcd_test and send it to print queue.
 
-Find demo program for Print Queue [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
+find demo object for Print Queue [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
 
 The print queue can be viewed in Fiori app Maintain Print Queue.
 
 <img width="645" alt="Print6" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/62f884c2-cd01-482c-9863-5f4ff14f779b">
 
 If you want to integrate physical printer to ABAP Environment, follow this blog that guides you from setting up communication scnerio and installing Cloud Print Manager. https://blogs.sap.com/2017/08/07/cloud-print-manager-installation-and-configuration/
+
+# Job scheduling
+Required roles: Application Jobs(SAP_CORE_BC_APJ_JCE), Application Job Templates(SAP_CORE_BC_APJ_TPL), Maintain Job Users(SAP_CORE_BC_APJ_USR_PC)
+
+<img width="313" alt="JobSchedule1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/ae0b2c76-1f63-4dbc-b6f0-e035aaa93177">
+
+1. There are predefined job template to schedule your job from. If none of them meet your need, you must create your custom job template.
+
+2. To create your custom template, first define your job entry by creating below class. This defines design time information on your job.
+
+Refenrece class [zcl_job_schedule_apj](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_job_schedule_apj.clas.abap)
+
+3. Then create another class to create the job catalog and job template from the job you defined. Note that you need package and transport request.
+
+Refenrece class [zcl_job_template_apj](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_job_template_apj.clas.abap)
+
+4. After successful execution, go to Fiori app maintain Application Job Template and the new job template is created.
+
+<img width="524" alt="JobSchedule2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1b28f40f-233f-4fb2-bbdc-70ef0762138a">
+
+5. Use Fiori app Application jobs to create a job with the job template.
+
+<img width="635" alt="JobSchedule3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5d6e9a3e-4654-4e64-a31a-efac8ade930d">
+
+6. The method if_apj_rt_exec_object~execute in class zcl_job_schedule_apjs is executed. Whatever business logic you implemented there will be processed.
+
+7. If you want to start, change, delete jobs programmatically, use class cl_apj_rt_api.
+
+# Large object handling
+The completely guide to storing large object in database table can be found in [Streams in RAP : Uploading PDF , Excel and Other Files in RAP Application](https://blogs.sap.com/2022/08/26/streams-in-rap-uploading-pdf-excel-and-other-files-in-rap-application/)
+
+Find demo objects for Large object handling [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/tree/main/src/LargeObjectHandling)
+
+# Parallel processing
+Find demo objects for Parallel processing [zcl_paralell1](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_paralell1.clas.abap) and [zcl_paralell2](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_paralell2.clas.abap) 
