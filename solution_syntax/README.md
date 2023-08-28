@@ -81,19 +81,22 @@ This app is meant to maintain your custom Z customizing table but by default, SA
 # Forms and printing 
 *The below setup is for Business Technology Platform. Connecting Forms Service by Adobe with ABAP Environment in S4 may require different setup.
 
-**Preparation** &nbsp;<br />
+**Preparation**
+
 Forms Service by Adobe and Forms Service by Adobe API are required in Business Technology Platform. On the service instance of Forms Service by Adobe API, create a service key. Finally, create destination for Forms Service by Adobe instance.
 
 <img width="461" alt="Print1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/c46b0904-59eb-4066-a266-68079fd254ff">
 
-**Build Form template** &nbsp;<br />
+**Build Form template**
+
 Since there is no SAP Script or Smartforms, Adobe LiveCycle Designer must be used to create form layout. Follow note 2187332 to install it to your local PC.
 
 Once the template is created, download in Adobe XML Form (*xdp), then upload this to Forms Template Store.
 
 <img width="366" alt="Print2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/e359469e-d7c6-4076-bee4-2a59d67c0cf1">
 
-**Rendering Forms** &nbsp;<br />
+**Rendering Forms**
+
 Rendering forms requies Forms Service by Adobe. Follow my blog below to set it up and consume from ABAP. https://blogs.sap.com/2022/12/14/get-started-with-forms-service-by-adobe-rest-api-in-btp/
 
 Create client for Forms Service by Adobe template store.
@@ -111,7 +114,8 @@ The rendering will return the PDF content result with base64 encoded string.
 
 <img width="483" alt="Print3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1e4ec549-65c1-4431-b3da-76e45807e6dd">
 
-**Viewing PDF** &nbsp;<br />
+**Viewing PDF**
+
 To view the content, we must first convert base64 encoded content to xstring. Then upload this xstring as mime object in your Ztable. This Z table can be created following “Excel upload to itab” part of this blog.
 
 ```abap
@@ -137,7 +141,8 @@ Go to the RAP service and the inserted record is disaplayed. Click on the attach
 
 find demo object for Forms and printing [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
 
-**Print Queue** &nbsp;<br />
+**Print Queue**
+
 Create a print queue by using cl_print_queue_utils. The below examples sends data from table zcd_test and send it to print queue.
 
 find demo object for Print Queue [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zprint_ads.clas.abap)
@@ -181,4 +186,94 @@ The completely guide to storing large object in database table can be found in [
 Find demo objects for Large object handling [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/tree/main/src/LargeObjectHandling)
 
 # Parallel processing
-Find demo objects for Parallel processing [zcl_paralell1](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_paralell1.clas.abap) and [zcl_paralell2](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_paralell2.clas.abap) 
+Find demo objects for Parallel processing [zcl_paralell1](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_paralell1.clas.abap), [zcl_paralell2](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zcl_paralell2.clas.abap) and trigger class [ztrigger_parallel](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/ztrigger_parallel.clas.abap) 
+
+# Translation
+Since there is no GUI, the GUI based translation maintenance is no longer available. For this purpose, Maintain Translations app is used.
+
+<img width="440" alt="Translation1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/8be70abd-7ac1-4ccf-a2b4-6d06252dcb82">
+
+List of all objects that are translatable.
+
+- Application Log Object
+- Business Configuration Object
+- CDS Type Definition
+- Data Definition
+- Data Element
+- Domain
+- IAM Business Catalog
+- Message Class
+- Metadata Extension
+
+Define the source language and target language. Demonstrate translation for metadata extension for RAP based application.
+
+<img width="420" alt="Translation3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/4c88837b-3ca6-44ac-a97b-01052f07759d">
+
+XLF file is downloaded and this is the file that defines the translation. Add target translation of Japanese. Upload the same file back in the Maintain Translation app and don’t forget to publish the translation.
+
+<img width="423" alt="Translation4" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/6045b8a6-a7ec-45fe-8c53-8e8433416747">
+
+Start the application in Japanese and English. The field names are translated based on the uploaded XLF file.
+
+<img width="687" alt="Translation5" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/48660049-f383-45b1-8106-6180feeb780d">
+<img width="683" alt="Translation6" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/66c9569f-4c07-47b1-bda7-b837688e70ec">
+
+# UI
+**ABAP Development Tool output console**
+
+Since there is no SAP GUI, write statement or ALV output is not possible. The easiest way in ABAP for Cloud Development is to use output console in ADT. Wrap IF_OO_ADT_CLASSRUN into your class and use it’s Write method to output data.
+
+This output is only suited for simple string output. It is not meant only for developer, and not for generating report for business application user.
+```abap
+CLASS ztest_class DEFINITION
+PUBLIC
+FINAL
+CREATE PUBLIC .
+PUBLIC SECTION.
+  INTERFACES: if_oo_adt_classrun.
+PROTECTED SECTION.
+PRIVATE SECTION.
+ENDCLASS.
+
+CLASS ztest_class IMPLEMENTATION.
+  METHOD if_oo_adt_classrun~main.
+    out->write( 'Hello world!' ).
+  ENDMETHOD.
+ENDCLASS.
+```
+
+**Fiori app generate by ABAP UI service**
+This is the primary approach to generate UI for report applications. It is part of ABAP RAP framework and no front end development is needed to generate Fiori application. It is completely different framework from SAP GUI. Instead of creating dynpro and controlling logic in PBO, PAI, ABAP RAP uses CDS view as base and expose Odata service. Fiori launchpad consumes UI service part of Odata and generates a Fiori list report based on the data from CDS view and metadata definition of it.
+
+Supported feature:
+
+- List page, object page to display data
+- Search, filter, variant
+- CRUD operation for backend database
+- Visualization(graph, chart)
+- Screen logic(Validation, conversion, user event)
+- Draft & Copy capabilitties
+- Inline edit
+- Locking mechanism
+
+Limitation:
+
+- All limitation with Fiori Element apply(No flexibility in UI, limitation in screen control, etc.)
+- Must be deployed outside of ABAP Environment, using WebEDI such as Business Application Studio or Visual Studio.
+
+<img width="523" alt="UI" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/08142312-4c7f-4aa4-ba85-8a51931a84b8">
+
+**Fiori app generate by ABAP2UI5(open source)**
+
+This is open source project that allows developer to create Fiori UI5 application with pure ABAP. It is the closest approach to built free-style UI5 application in ABAP Environment. https://github.com/abap2UI5/abap2UI5
+
+Highlights:
+
+- Avaialble for ABAP releases (from NW 7.02 to ABAP 2305)
+- Avaialble for both ABAP for Cloud and Standard ABAP language version
+- Supports Selection Screens, Tables, Lists, Popups, F4-Helps, MIME Editor, File Upload/download, Chart/Graph, Side Effects, etc..
+- Supports all Fiori Elements floorplan
+
+If you want to create more flexible UI with ABAP, consider using ABAP2UI5 instead of ABAP RAP(below is a sample UI I created with ABAP2UI5).
+
+<img width="490" alt="UI2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5d8708aa-63bd-4c6a-b2c2-2dab968617e7">
