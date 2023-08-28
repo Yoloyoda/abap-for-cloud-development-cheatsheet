@@ -68,5 +68,70 @@ Step1. Upload excel file by RAP Odata service described in “Large object handi
 Step2. Read the XSTRING to with xco_cp_xlsx. This class will read worksheet specified. Prepare an internal table that matches the file structure of excel. Use IF_XCO_XLSX_RA_WORKSHEET to select the range of the worksheet. Finally, use write_to method in if_xco_xlsx_ra_rs_operation_fc to write the values in internal table.
 
 Find demo program for Excel upload to itab [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zexcel_itab.clas.abap)
+
 <img width="349" alt="Excel2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/82427493-5541-4d2f-b9ab-04f01159bc4d">
+
+# Exchange rate
+The released API cl_exchange_rates performs currency conversion and exchange rate update, but it does not have method to read the list of exchange rate. To workaround this, we can use standard app “Upload Business Configuration” from Fiori Launchpad. Role “SAP_CA_BC_IC_LND_PC” is required to access this, or assign role template “SAP_BR_BPC_EXPERT”.
+
+This app is meant to maintain your custom Z customizing table but by default, SAP has generously allowed the maintenance of below standard currency tables.
+
+<img width="590" alt="Exchange rate" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/39669a89-f674-4f08-a4e9-73b404cdbbe2">
+
+# Forms and printing
+*The below setup is for Business Technology Platform. Connecting Forms Service by Adobe with ABAP Environment in S4 may require different setup.
+
+Preparation
+Forms Service by Adobe and Forms Service by Adobe API are required in Business Technology Platform. On the service instance of Forms Service by Adobe API, create a service key. Finally, create destination for Forms Service by Adobe instance.
+
+<img width="461" alt="Print1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/c46b0904-59eb-4066-a266-68079fd254ff">
+
+Build Form template
+Since there is no SAP Script or Smartforms, Adobe LiveCycle Designer must be used to create form layout. Follow note 2187332 to install it to your local PC.
+
+Once the template is created, download in Adobe XML Form (*xdp), then upload this to Forms Template Store.
+
+<img width="366" alt="Print2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/e359469e-d7c6-4076-bee4-2a59d67c0cf1">
+
+Rendering Forms
+Rendering forms requies Forms Service by Adobe. Follow my blog below to set it up and consume from ABAP. https://blogs.sap.com/2022/12/14/get-started-with-forms-service-by-adobe-rest-api-in-btp/
+
+Create client for Forms Service by Adobe template store.
+```abap
+mo_http_destination = cl_http_destination_provider=>create_by_cloud_destination(
+  i_service_instance_name = CONV #( iv_service_instance_name )
+  i_name = 'ADS_SRV'
+  i_authn_mode = if_a4c_cp_service=>service_specific
+  ).
+mv_client = cl_web_http_client_manager=>create_by_http_destination( mo_http_destination ).
+```
+Render PDF by calling Forms Service by Adobe API URI “/v1/adsRender/pdf”. You can find the complete list of supported URI of this API here. https://adsrestapi-formsprocessing.cfapps.eu10.hana.ondemand.com/swagger
+
+The rendering will return the PDF content result with base64 encoded string.
+
+<img width="483" alt="Print3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1e4ec549-65c1-4431-b3da-76e45807e6dd">
+
+Viewing PDF
+To view the content, we must first convert base64 encoded content to xstring. Then upload this xstring as mime object in your Ztable. This Z table can be created following “Excel upload to itab” part of this blog.
+
+```abap
+"Get the base64 encoded PDF content
+DATA(lo_json) = /ui2/cl_json=>generate( json = lv_rendered_pdf ).
+IF lo_json IS BOUND.
+  ASSIGN lo_json->* TO FIELD-SYMBOL(<data>).
+  ASSIGN COMPONENT `fileContent` OF STRUCTURE <data> TO FIELD-SYMBOL(<field>).
+  ASSIGN <field>->* TO FIELD-SYMBOL(<pdf_base64>).
+ENDIF.
+
+"Upload the xstring to z table, so the content can be viewed with RAP generated report
+DATA: lt_input TYPE STANDARD TABLE OF zblob_test.
+lt_input = VALUE #( ( docnum = '1000000001' filename = 'test.pdf' attachment = lv_pdf_xstring mimetype = 
+  'application/pdf' )
+  ).
+INSERT zblob_test FROM TABLE @lt_input.
+```
+Go to the RAP service and the inserted record is disaplayed. Click on the attachment and the generated PDF from Form Service by Adobe will open.
+
+<img width="516" alt="Print4" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1a115900-7282-4117-af87-a307e5428fd5">
+<img width="282" alt="Print5" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/32d21cb5-dddf-4131-a30e-de33c68b9ce2">
 
