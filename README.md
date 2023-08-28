@@ -20,7 +20,5 @@ You can choose to just refer to the cheat sheet, or you can deep dive into each 
 - ABAP object for cloud development may be renewed and deprecated over time
 - The list covers the most common ABAP topics and Line of Business(from personal perspective) but certain areas of your interest may be missing. You are welcome to comment these areas and I maybe able to add them later on.
 # Contribution
-You are welcome to contribute if you can expand the contents by adding missing areas/concepts, or improve the existing contents. 
-
-To contribute, Git pull request flow must be followed. Please describe what is added/changed in the pull request. Review process may take a day, few days or a week, depending on the author's workload. If it takes longer, you're welcome to contact me directly.
+Please refer to [CONTRIBUTING.md](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/CONTRIBUTING.md)
 
