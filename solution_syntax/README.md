@@ -57,3 +57,16 @@ Find demo program for Calendar [here](https://github.com/Yoloyoda/abap-for-cloud
 
 
 Find demo program for Change document logging [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zchange_document.clas.abap)
+
+# Excel upload to itab
+**The upload data**
+
+<img width="125" alt="Excel1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/ca0e61bd-0c3f-494c-b267-34ebfdaddc3a">
+
+Step1. Upload excel file by RAP Odata service described in “Large object handing(storing as MIME)”. This way, the excel data is transformed to XSTRING.
+
+Step2. Read the XSTRING to with xco_cp_xlsx. This class will read worksheet specified. Prepare an internal table that matches the file structure of excel. Use IF_XCO_XLSX_RA_WORKSHEET to select the range of the worksheet. Finally, use write_to method in if_xco_xlsx_ra_rs_operation_fc to write the values in internal table.
+
+Find demo program for Excel upload to itab [here](https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/zexcel_itab.clas.abap)
+<img width="349" alt="Excel2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/82427493-5541-4d2f-b9ab-04f01159bc4d">
+
