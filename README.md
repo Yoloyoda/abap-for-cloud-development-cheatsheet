@@ -12,7 +12,7 @@ Cheat sheet on [Solution & Syntax](https://github.com/Yoloyoda/abap-for-cloud-de
 Solution overview & hint based on ABAP for Cloud Development
 You can choose to just refer to the cheat sheet, or you can deep dive into each solution at later half of this blog.
 
-<img width="589" alt="Diagram" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/0b32801b-0f02-4acd-bc65-d83f8a4b40b0">
+<img width="589" alt="Diagram" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/c759b859-f00c-42ee-8a91-b2f9dd41e09c">
 
 # Disclaimer
 - Availability of ABAP object for cloud development may differ between ABAP Platform for S4 HANA and BTP ABAP Environment
