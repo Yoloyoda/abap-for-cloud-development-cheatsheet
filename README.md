@@ -1,5 +1,4 @@
 # Abap-for-Cloud-Development-CheatSheet
-Cheatsheet for smooth adaptation to ABAP on Cloud.
 Original blog https://blogs.sap.com/2023/08/15/smooth-transition-to-abap-for-cloud-developmentcheat-sheet/
 
 More and more organizations are coming across the term **ABAP on Cloud**. Whether they are considering **Side-by-Side Extension** with SAP Business Technology Platform or **On-stack Extension** in S4 HANA, I’m certain that this is discussed in your strategy meeting at least once.
