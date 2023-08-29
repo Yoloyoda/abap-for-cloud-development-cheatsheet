@@ -155,7 +155,7 @@ If you want to integrate physical printer to ABAP Environment, follow this blog 
 # Job scheduling
 Required roles: Application Jobs(SAP_CORE_BC_APJ_JCE), Application Job Templates(SAP_CORE_BC_APJ_TPL), Maintain Job Users(SAP_CORE_BC_APJ_USR_PC)
 
-<img width="313" alt="JobSchedule1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/ae0b2c76-1f63-4dbc-b6f0-e035aaa93177">
+<img width="313" alt="JobSchedule1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/06fe03a8-65b3-4b85-be59-4fc9e983c535">
 
 1. There are predefined job template to schedule your job from. If none of them meet your need, you must create your custom job template.
 
@@ -169,11 +169,11 @@ Refenrece class [zcl_job_template_apj](https://github.com/Yoloyoda/abap-for-clou
 
 4. After successful execution, go to Fiori app maintain Application Job Template and the new job template is created.
 
-<img width="524" alt="JobSchedule2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/1b28f40f-233f-4fb2-bbdc-70ef0762138a">
+<img width="524" alt="JobSchedule2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/d1b3e03e-1e4b-4238-88a4-8d77d3fe54c6">
 
 5. Use Fiori app Application jobs to create a job with the job template.
 
-<img width="635" alt="JobSchedule3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5d6e9a3e-4654-4e64-a31a-efac8ade930d">
+<img width="635" alt="JobSchedule3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/3bedc63b-2612-426a-84b4-59af3fd319a5">
 
 6. The method if_apj_rt_exec_object~execute in class zcl_job_schedule_apjs is executed. Whatever business logic you implemented there will be processed.
 
@@ -190,7 +190,7 @@ Find demo objects for Parallel processing [zcl_paralell1](https://github.com/Yol
 # Translation
 Since there is no GUI, the GUI based translation maintenance is no longer available. For this purpose, Maintain Translations app is used.
 
-<img width="440" alt="Translation1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/8be70abd-7ac1-4ccf-a2b4-6d06252dcb82">
+<img width="440" alt="Translation1" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/6ad9fc2f-6030-45f1-a519-73d517ca4f65">
 
 List of all objects that are translatable.
 
@@ -206,16 +206,16 @@ List of all objects that are translatable.
 
 Define the source language and target language. Demonstrate translation for metadata extension for RAP based application.
 
-<img width="420" alt="Translation3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/4c88837b-3ca6-44ac-a97b-01052f07759d">
+<img width="420" alt="Translation3" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/8af68f2b-0e8b-4361-9c13-78a2468977a3">
 
 XLF file is downloaded and this is the file that defines the translation. Add target translation of Japanese. Upload the same file back in the Maintain Translation app and don’t forget to publish the translation.
 
-<img width="423" alt="Translation4" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/6045b8a6-a7ec-45fe-8c53-8e8433416747">
+<img width="423" alt="Translation4" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/00794aa5-571c-4161-bdca-ce746bed81c0">
 
 Start the application in Japanese and English. The field names are translated based on the uploaded XLF file.
 
-<img width="687" alt="Translation5" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/48660049-f383-45b1-8106-6180feeb780d">
-<img width="683" alt="Translation6" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/66c9569f-4c07-47b1-bda7-b837688e70ec">
+<img width="687" alt="Translation5" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/74de06f4-ff7f-4163-b59e-8c95bb153978">
+<img width="683" alt="Translation6" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/40110605-8c2f-47a1-9cff-c13d40ac9897">
 
 # UI
 **ABAP Development Tool output console**
@@ -261,7 +261,7 @@ Limitation:
 - All limitation with Fiori Element apply(No flexibility in UI, limitation in screen control, etc.)
 - Must be deployed outside of ABAP Environment, using WebEDI such as Business Application Studio or Visual Studio.
 
-<img width="523" alt="UI" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/08142312-4c7f-4aa4-ba85-8a51931a84b8">
+<img width="523" alt="UI" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/0df8a95d-e298-4969-ae43-cf506b1a3e6f">
 
 **Fiori app generate by ABAP2UI5(open source)**
 
@@ -276,4 +276,4 @@ Highlights:
 
 If you want to create more flexible UI with ABAP, consider using ABAP2UI5 instead of ABAP RAP(below is a sample UI I created with ABAP2UI5).
 
-<img width="490" alt="UI2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/5d8708aa-63bd-4c6a-b2c2-2dab968617e7">
+<img width="490" alt="UI2" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/ccb0c0c0-7e30-446b-a864-f452b615edda">
