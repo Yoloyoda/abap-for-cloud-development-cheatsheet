@@ -1,4 +1,4 @@
-Access complete cheatsheet [here](https://htmlpreview.github.io/?https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/src/solution_syntax/solution_syntax.html)
+Access complete cheatsheet [here](https://htmlpreview.github.io/?https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/blob/main/solution_syntax/solution_syntax.html)
 
 <img width="686" alt="Solution" src="https://github.com/Yoloyoda/abap-for-cloud-development-cheatsheet/assets/49046663/9a0efbbb-7d6e-4a65-a99f-1fba596565f7">
 
